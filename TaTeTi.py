@@ -17,7 +17,7 @@ def set_tile(row, column):
     else:
         curr_player = playerO
     
-    label["text"] = curr_player+"'s turn"
+    label["text"] = curr_player+", es tu turno!"
 
     check_winner()
 
@@ -53,7 +53,7 @@ def check_winner():
 
     if (board[0][2]["text"] == board[1][1]["text"] == board[2][0]["text"]
         and board[0][2]["text"] != ""):
-        label.config(text=board[0][2]["text"]+" es el ganador!", foreground=color_yellow)
+        label.config(text=board[0][2]["text"]+" es el ganador!", foreground=color_orange)
         board[0][2].config(foreground=color_orange, background=color_light_gray)
         board[1][1].config(foreground=color_orange, background=color_light_gray)
         board[2][0].config(foreground=color_orange, background=color_light_gray)
@@ -71,7 +71,7 @@ def new_game():
     turns = 0
     game_over = False
 
-    label.config(text=curr_player+", es tu turno", foreground="white")
+    label.config(text=curr_player+", es tu turno", foreground="orange")
 
     for row in range(3):
         for column in range(3):
@@ -84,8 +84,8 @@ board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 
 color_blue = "blue"
 color_orange = "orange"
-color_gray = "gray"
-color_light_gray = "#646464"
+color_gray = "black"
+color_light_gray = "black"
 
 turns = 0
 game_over = False
@@ -96,7 +96,7 @@ window.resizable(False, False)
 
 frame = tkinter.Frame(window)
 label = tkinter.Label(frame, text=curr_player+", es tu turno", font=("Comic sans", 20), background=color_gray,
-                      foreground="white")
+                      foreground="orange")
 label.grid(row=0, column=0, columnspan=3, sticky="we")
 
 for row in range(3):
@@ -107,7 +107,7 @@ for row in range(3):
         board[row][column].grid(row=row+1, column=column)
 
 button = tkinter.Button(frame, text="¡OTRA VEZ!", font=("Consolas", 20), background=color_gray,
-                        foreground="white", command=new_game)
+                        foreground="orange", command=new_game)
 button.grid(row=4, column=0, columnspan=3, sticky="we")
 
 frame.pack()
